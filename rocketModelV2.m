@@ -2,13 +2,17 @@ function rocketModelV2()
 clc; close all; clear;
 % Constants
 load physicalConstants-SI.mat mu0
-% Array Parameters
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Array Parameters (CHANGE THIS)
 R0 = 16e-3 / 2; % Array radius, [m]
 V = 100 * 10^3; % [m/s]
 alph = 0.5; % fraction of mass remaining at t = t0 (end of current pulse)
 N = 16; % number of wires
 rho_w = 2710; % wire density, [kg/m^3]
 t0 = 480e-9; % pulse duration , s
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % Calulate for a given wire diameter
 d = 40e-6; % [m]
