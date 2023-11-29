@@ -58,7 +58,7 @@ fprintf('num wires for %2.1f um diameter wires = %2.1f\n',d*1e6, getWireNumrequi
 end
 
 
-function out = I(t) % Current function  
+function out = I(t) % Current function (UPDATE THIS FOR NEW RUN) 
 % Approx. current profile for a underdamped function
 % t in [s]
 
@@ -67,6 +67,7 @@ function out = I(t) % Current function
 % t0 = 2 * 1.5 * 10^-6; % [s], 2 \times rise time
 % out = I_pk * sin(pi * t / t0); % [A]
 % 
+
 % % Puffin - Exact
 % % V0 = 70e3; % [V], Voltage
 % % L = 83e-9; % [H], Inductance
@@ -74,15 +75,15 @@ function out = I(t) % Current function
 % % gamma = 3.01 * 10^5; % [s^-1]
 % % out = V0 / (L * w) * exp(-gamma*t) .* sin(w * t); % [A]
 
-% Z
-Im = 1.4e6; % [A]
-tm = 240e-9; % [s], Rise time
-out = Im * (sin(pi * (t) / (2 * tm))).^2;
+% Z Machine
+% Im = 10e6; % [A]
+% tm = 300e-9; % [s], Rise time
+% out = Im * (sin(pi * (t) / (2 * tm))).^2;
 
-% % MAGPIE
-% Im = 1.4e6; % [A]
-% tm = 1 * 250e-9; % [s], Rise time
-% out = Im * (sin(pi * t / (2 * tm))).^2;
+% MAGPIE
+Im = 1.4e6; % [A]
+tm = 1 * 250e-9; % [s], Rise time
+out = Im * (sin(pi * t / (2 * tm))).^2;
 
 % % MAGPIE sum of sines
 % a1 = 0.7987;
@@ -115,7 +116,7 @@ t = linspace(0,t0,100);
 figure
 plot(t*1e9,I(t)*1e-6,'k','LineWidth',2.5);
 xlabel('time, ns'); ylabel('Current, MA');
-formatPlots(); legend off; axis square
+legend off; axis square
 end
 
 function showDensityDistribution(t,R0,Vab)
@@ -132,6 +133,6 @@ plot((r-R0)*1e3,rho,'Color',sqclr('r',ii),'LineWidth',2.5,...
 end
 xlabel('$r-R_0$, mm','Interpreter','latex'); 
 ylabel('Mass Density, $kgm^{-3}$','Interpreter','latex');
-formatPlots(); axis square
+ axis square
 end
 
